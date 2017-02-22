@@ -18,6 +18,7 @@ import org.w3c.dom.Text;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import timber.log.Timber;
 
 /**
  * Created by baama on 21/02/2017.
@@ -68,11 +69,11 @@ public class SendNfcInfoFragment extends Fragment
 
     private void registerNFCMessage(){
         NfcAdapter adapter = NfcAdapter.getDefaultAdapter(getActivity());
-        if(adapter!=null) {
+        if(adapter!=null && adapter.isEnabled()) {
             adapter.setNdefPushMessageCallback(this, getActivity());
             adapter.setOnNdefPushCompleteCallback(this, getActivity());
         } else {
-            info.setText("NFC is disconnected or unnavailable");
+            info.setText("NFC is disabled or unnavailable");
         }
     }
 
