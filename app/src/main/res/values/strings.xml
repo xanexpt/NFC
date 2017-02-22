@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">NFC</string>
+    <string name="double_back_message">Press back again to exit</string>
+    <string name="exit">Exit</string>
+    <string name="back">Back</string>
+
+
+    <string name="home_send">Send NFC data</string>
+    <string name="home_receive">Receive NFC data</string>
+
+    <string name="sending">Sending...</string>
+    <string name="receiving">Always ready to receive...</string>
+
+</resources>
