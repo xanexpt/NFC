@@ -8,10 +8,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.badjoras.nfctest.R;
 import com.badjoras.nfctest.utils.NfcUtils;
 
+import org.w3c.dom.Text;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -21,6 +25,8 @@ import butterknife.OnClick;
 
 public class SendNfcInfoFragment extends Fragment
         implements NfcAdapter.CreateNdefMessageCallback, NfcAdapter.OnNdefPushCompleteCallback {
+
+    @BindView(R.id.text_info) TextView info;
 
     public static SendNfcInfoFragment newInstance() {
         return new SendNfcInfoFragment();
@@ -62,15 +68,21 @@ public class SendNfcInfoFragment extends Fragment
 
     private void registerNFCMessage(){
         NfcAdapter adapter = NfcAdapter.getDefaultAdapter(getActivity());
-        adapter.setNdefPushMessageCallback(this, getActivity());
-        adapter.setOnNdefPushCompleteCallback(this, getActivity());
+        if(adapter!=null) {
+            adapter.setNdefPushMessageCallback(this, getActivity());
+            adapter.setOnNdefPushCompleteCallback(this, getActivity());
+        } else {
+            info.setText("NFC is disconnected or unnavailable");
+        }
     }
 
     private void unregisterNFCMessage(){
         NfcAdapter adapter = NfcAdapter.getDefaultAdapter(getActivity());
-        adapter.setNdefPushMessage(null, getActivity());
-        adapter.setNdefPushMessageCallback(null, getActivity());
-        adapter.setOnNdefPushCompleteCallback(null, getActivity());
+        if(adapter!=null) {
+            adapter.setNdefPushMessage(null, getActivity());
+            adapter.setNdefPushMessageCallback(null, getActivity());
+            adapter.setOnNdefPushCompleteCallback(null, getActivity());
+        }
     }
 
     private void goBack(){
