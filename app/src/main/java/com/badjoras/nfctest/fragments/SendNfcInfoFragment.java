@@ -13,12 +13,9 @@ import android.widget.TextView;
 import com.badjoras.nfctest.R;
 import com.badjoras.nfctest.utils.NfcUtils;
 
-import org.w3c.dom.Text;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import timber.log.Timber;
 
 /**
  * Created by baama on 21/02/2017.
