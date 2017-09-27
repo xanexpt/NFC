@@ -1,2 +1,2 @@
 # NFC
-test sending string from one device to another using nfc Ndef Push Message
+nfc Ndef Push Message
